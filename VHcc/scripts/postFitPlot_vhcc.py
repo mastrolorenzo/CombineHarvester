@@ -201,11 +201,11 @@ if not args.doVV :
     'Wen':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})"+(args.mu),["ZH_hcc","WH_hcc"],2),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -217,11 +217,11 @@ if not args.doVV :
     'Wmn':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})"+(args.mu),["ZH_hcc","WH_hcc"],2),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -234,7 +234,7 @@ if not args.doVV :
     'Zee':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","ggZH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})"+(args.mu),["ZH_hcc","ggZH_hcc"],2),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -246,7 +246,7 @@ if not args.doVV :
     'Zmm':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","ggZH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})"+(args.mu),["ZH_hcc","ggZH_hcc"],2),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -259,11 +259,11 @@ if not args.doVV :
            backgroundComp("VH(H#rightarrowc#bar{c})"+(args.mu),["ZH_hcc","WH_hcc","ggZH_hbb"],2),
            backgroundComp("QCD",["QCD"],16),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -280,11 +280,11 @@ if args.doVV :
            backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -296,11 +296,11 @@ if args.doVV :
            backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -313,7 +313,7 @@ if args.doVV :
            backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -325,7 +325,7 @@ if args.doVV :
            backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -338,11 +338,11 @@ if args.doVV :
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("QCD",["QCD"],16),
            backgroundComp("Z+udsg",["Zj_ll"],821),
-           backgroundComp("Z+bl/cl",["Zj_blc"],830),
+           backgroundComp("Z+b/c",["Zj_blc"],830),
            backgroundComp("Z+b#bar{b}/bc",["Zj_bbc"],829),
            backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
-           backgroundComp("W+bl/cl",["Wj_blc"],801),
+           backgroundComp("W+b/c",["Wj_blc"],801),
            backgroundComp("W+b#bar{b}/bc",["Wj_bbc"],802),
            backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
@@ -673,9 +673,11 @@ latex2.SetTextAngle(0)
 latex2.SetTextColor(ROOT.kBlack)
 latex2.SetTextSize(0.028)
 if args.extralabel=="":
-  setY=0.84
+#Luca  setY=0.84
+  setY=0.60
 else:
-  setY=0.78
+  setY=0.71
+#Luca  setY=0.78
 setX=0.18
 
 latex2.DrawLatex(setX,setY,channel_label)
@@ -699,6 +701,7 @@ if args.subbkg!=0:
 if args.subbkg==0:
   ROOT.gStyle.SetTitleFont(42)
 plot.FixTopRange(pads[0], plot.GetPadYMax(pads[0]), extra_pad if extra_pad>0 else 0.30)
+#Luca plot.DrawCMSLogo(pads[0], 'CMS', args.extralabel, 10, 0.04, 0.05, 1.0, '', 0.8)
 plot.DrawCMSLogo(pads[0], 'CMS', args.extralabel, 10, 0.04, 0.05, 1.0, '', 0.8)
 plot.DrawTitle(pads[0], args.lumi, 3)
 
