@@ -198,8 +198,7 @@ histo_file = ROOT.TFile(shape_file_name)
 background_schemes = {}
 if not args.doZ :
   background_schemes = {
-    'inclusive':[backgroundComp("ggH(H#rightarrowc#bar{c})"+(args.mu),["hcc","hcc"],2),
-           backgroundComp("ggH(H#rightarrowb#bar{b})",["hqq"],881),
+    'inclusive':[backgroundComp("ggH(H#rightarrowb#bar{b})",["hqq"],881),
            backgroundComp("QCD",["qcd"],16),
            backgroundComp("Wcq",["wcq"],801),
            backgroundComp("Wqq",["wqq"],802),
@@ -212,15 +211,14 @@ if not args.doZ :
 
 if args.doZ :
   background_schemes = {
-    'inclusive':[backgroundComp("ggH(H#rightarrowc#bar{c})"+(args.mu),["hcc","hcc"],2),
+    'inclusive':[backgroundComp("ggH(H#rightarrowc#bar{c})"+(args.mu),["hcc"],2),
            backgroundComp("ggH(H#rightarrowb#bar{b})",["hqq"],881),
            backgroundComp("QCD",["qcd"],16),
            backgroundComp("Wcq",["wcq"],801),
            backgroundComp("Wqq",["wqq"],802),
            backgroundComp("tqq",["tqq"],866),
            backgroundComp("V+other",["zqq"], 623),
-           backgroundComp("Z#rightarrowb#bar{b}",["zbb"],615),
-           #backgroundComp("Z#rightarrowc#bar{c}",["zcc"],607)
+           backgroundComp("Z#rightarrowb#bar{b}",["zbb"],615)
            ]
     }
 

@@ -44,12 +44,12 @@ for MODE in ['prefit']:
             OUTNAME = "%s" % CHN_DICT_SR[CHN][i][0]
             EXTRALABEL = CHN_DICT_SR[CHN][i][2]
             os.system(('./scripts/postFitPlot_vhcc.py' \
-                ' --file=shapes.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s' \
+                ' --file=shapes_last.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s' \
                 #                  ' --ratio_range 0.4,1.6 --empty_bin_error --channel=%(CHN)s --blind --x_blind_min 100 --x_blind_max 150 --x_title BDT --doZ True' \
-                       ' --ratio_range 0.0,2.0 --empty_bin_error --channel=%(CHN)s --x_title "m(SD) [GeV]" --y_title "Events" --mu ", #mu=1"' \
-                ' --outname %(OUTNAME)s --mode %(MODE)s --log_y --custom_y_range --y_axis_min "5E-3" --keepPreFitSignal True --doZ True --lumi "35.9 fb^{-1} (13 TeV)"'\
+                       ' --ratio_range 0.5,1.5 --empty_bin_error --channel=%(CHN)s --x_title "m(SD) [GeV]" --y_title "Events" --mu ", #mu=1"' \
+                ' --outname %(OUTNAME)s --mode %(MODE)s --custom_y_range --y_axis_min "5E-3" --keepPreFitSignal True --doZ True --lumi "35.9 fb^{-1} (13 TeV)"'\
                 ' --channel_label "%(LABEL)s" --extralabel "%(EXTRALABEL)s"' % vars()))
-
+            #--log_y
 
 
 #uncomment to run for MODE in ['postfit']:
