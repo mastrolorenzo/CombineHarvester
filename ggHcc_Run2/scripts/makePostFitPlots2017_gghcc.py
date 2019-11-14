@@ -43,7 +43,7 @@ for MODE in ['prefit']:
             LABEL = "%s" % CHN_DICT_SR[CHN][i][1]
             OUTNAME = "%s" % CHN_DICT_SR[CHN][i][0]
             EXTRALABEL = CHN_DICT_SR[CHN][i][2]
-            os.system(('./scripts/postFitPlot_vhcc.py' \
+            os.system(('./scripts/postFitPlot_gghcc.py' \
                 ' --file=shapes_last.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s' \
                 #                  ' --ratio_range 0.4,1.6 --empty_bin_error --channel=%(CHN)s --blind --x_blind_min 100 --x_blind_max 150 --x_title BDT --doZ True' \
                        ' --ratio_range 0.5,1.5 --empty_bin_error --channel=%(CHN)s --x_title "m(SD) [GeV]" --y_title "Events" --mu ", #mu=1"' \
@@ -58,7 +58,7 @@ for MODE in ['prefit']:
 #uncomment to run             LABEL = "%s" % CHN_DICT_SR[CHN][i][1]
 #uncomment to run             OUTNAME = "%s" % CHN_DICT_SR[CHN][i][0]
 #uncomment to run             EXTRALABEL = CHN_DICT_SR[CHN][i][2]
-#uncomment to run             os.system(('./scripts/postFitPlot_vhcc.py' \
+#uncomment to run             os.system(('./scripts/postFitPlot_gghcc.py' \
 #uncomment to run                 ' --file=shapes.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s' \
 #uncomment to run                 #                  ' --ratio_range 0.4,1.6 --empty_bin_error --channel=%(CHN)s --blind --x_blind_min 100 --x_blind_max 150 --x_title BDT --doZ True' \
 #uncomment to run                        ' --ratio_range 0.0,2.0 --empty_bin_error --channel=%(CHN)s --x_title "m(SD) [GeV]" --y_title "Events" --mu ", #mu=1"' \
