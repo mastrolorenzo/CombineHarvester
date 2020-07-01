@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import CombineHarvester.CombineTools.ch as ch
-import CombineHarvester.VHcc.systematics_vhcc_allcr as systs
+#Luca test 2017 commented out --> import CombineHarvester.VHcc.systematics_vhcc_allcr as systs
+import CombineHarvester.VHcc.systematics_vhcc_FullRun2 as systs
 import ROOT as R
 import glob
 import numpy as np
@@ -230,6 +231,7 @@ if not args.doVV:
       'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
       'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc','QCD'],
     }
+    print bkg_procs
 else:
     bkg_procs = {
     'Wen' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
@@ -516,17 +518,17 @@ cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).RenameSystematic
 cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVcc','CMS_LHE_weights_scale_muF_vzcc')
 
 if args.vjetsNLO:
- cb.FilterSysts(lambda x: x.name()=="CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
- cb.FilterSysts(lambda x: x.name()=="CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016")
- cb.FilterSysts(lambda x: x.name()=="CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016") 
- cb.FilterSysts(lambda x: x.name()=="CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
- cb.FilterSysts(lambda x: x.name()=="CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016")
- cb.FilterSysts(lambda x: x.name()=="CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016") 
- #cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_topptWeight_13TeV_2016") 
- cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_ptwweights_13TeV_2016") 
- cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_ptzweights_13TeV_2016") 
- cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_vjetnlodetajjrw_13TeV_2016") 
-
+  cb.FilterSysts(lambda x: x.name()=="CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
+  cb.FilterSysts(lambda x: x.name()=="CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016")
+  cb.FilterSysts(lambda x: x.name()=="CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016") 
+  cb.FilterSysts(lambda x: x.name()=="CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
+  cb.FilterSysts(lambda x: x.name()=="CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016")
+  cb.FilterSysts(lambda x: x.name()=="CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016") 
+  #cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_topptWeight_13TeV_2016") 
+  cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_ptwweights_13TeV_2016") 
+  cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_ptzweights_13TeV_2016") 
+  cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_vjetnlodetajjrw_13TeV_2016") 
+  
 #Luca cb.cp().channel(['Zee','Zmm']).bin_id([2,4,6,8,10]).RenameSystematic(cb,'CMS_cTagWeight_JES','CMS_cTagWeight_JES_lowPt')
 #Luca cb.cp().channel(['Zee','Zmm']).bin_id([2,4,6,8,10]).RenameSystematic(cb,'CMS_cTagWeight_JER','CMS_cTagWeight_JER_lowPt')
 
@@ -550,6 +552,7 @@ if args.vjetsNLO:
 #    cb.cp().syst_name(["CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
 
 
+
 if args.doVV:
   cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VVcc','.*LHE_weights.*VVcc'])
   cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VVother','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VVother','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_blc.*','LHE_weights.*Zj_bbc.*','LHE_weights.*Zj_cc.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_blc.*','LHE_weights.*Wj_bbc.*','LHE_weights.*Wj_cc.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
@@ -560,11 +563,9 @@ else:
   
 cb.SetGroup('sim_modelling',['CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_ptzweights_13TeV_2016','CMS_vhcc_topptWeight_13TeV_2016','.*vhcc_vjetnlodetajjrw.*','heavyFlavHadFrac_mismodelling.*'])
 cb.SetGroup('jes',['CMS_scale_j.*'])
-cb.SetGroup('jer',['CMS_res_j_13TeV_2016'])
+cb.SetGroup('jer',['CMS_res_j_13TeV.*'])
 cb.SetGroup('ctag',['CMS_cTagWeight.*'])
-#Luca cb.SetGroup('mistag',['.*bTagWeight.*LFStats.*','.*bTagWeight.*HF_.*'])
-cb.SetGroup('lumi',['lumi_13TeV','.*puWeight.*'])
-#Luca cb.SetGroup('lep_eff',['.*eff_e.*','.*eff_m.*'])
+cb.SetGroup('lumi',['lumi_13TeV.*','.*puWeight.*'])
 cb.SetGroup('lep_eff',['.*eff_e.*','.*eff_m.*'])
 cb.SetGroup('met',['.*MET.*'])
 
