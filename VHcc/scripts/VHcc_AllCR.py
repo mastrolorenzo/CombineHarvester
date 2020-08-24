@@ -145,6 +145,8 @@ parser.add_argument(
  '--mjj',  default=True, help="""if True assume we are running the mjj analysis""")
 parser.add_argument(
  '--doHbb',  default=False, help="""if True assume producing the datacards with VHbb as signal process""")
+parser.add_argument(
+ '--doKinFit',  default=False, help="""if True enable BDT with KinFit in 2L channels""")
 
 args = parser.parse_args()
 
@@ -220,7 +222,7 @@ if not args.doVV:
       'Wmn' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
       'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
       'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc','QCD'],
+      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc'],
       #'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVbb','VVcc'],
     }
   else:
@@ -229,7 +231,7 @@ if not args.doVV:
       'Wmn' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
       'Zmm' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
       'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc','QCD'],
+      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc'],
     }
     print bkg_procs
 else:
@@ -238,7 +240,7 @@ else:
     'Wmn' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
     'Zmm' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
     'Zee' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
-    'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','QCD'],
+    'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother'],
   }
 
 if not args.doVV:
@@ -275,12 +277,14 @@ if args.mjj:
 
     cats = {
       'Zee' : [
+#        (1, 'SR_highKinFit_Zee'), (2, 'SR_lowKinFit_Zee'), (3, 'Zlf_high_Zee'), (4,'Zlf_low_Zee'),
         (1, 'SR_high_Zee'), (2, 'SR_low_Zee'), (3, 'Zlf_high_Zee'), (4,'Zlf_low_Zee'),
         (5, 'Zhf_high_Zee'), (6, 'Zhf_low_Zee'), 
         (7,'ttbar_high_Zee'), (8,'ttbar_low_Zee'),(9,'Zcc_high_Zee'), (10,'Zcc_low_Zee')
         #(5,'Zcc_high_Zee'), (6,'Zcc_low_Zee'),(7,'ttbar_high_Zee'), (8,'ttbar_low_Zee')
         ],
       'Zmm' : [
+#        (1, 'SR_highKinFit_Zmm'), (2, 'SR_lowKinFit_Zmm'), (3, 'Zlf_high_Zmm'), (4,'Zlf_low_Zmm'),
         (1, 'SR_high_Zmm'), (2, 'SR_low_Zmm'), (3, 'Zlf_high_Zmm'), (4,'Zlf_low_Zmm'),
         (5, 'Zhf_high_Zmm'), (6, 'Zhf_low_Zmm'), 
         (7,'ttbar_high_Zmm'), (8,'ttbar_low_Zmm'),(9,'Zcc_high_Zmm'), (10,'Zcc_low_Zmm')
@@ -319,7 +323,7 @@ if args.bbb_mode==0:
 elif args.bbb_mode==1:
   cb.AddDatacardLineAtEnd("* autoMCStats 0")
 
-
+# BDT_VH_SR_lowKinFit_Zee_s_Top_CMS_cTagWeight_XSecWJetsUp
 
 for chn in chns:
   file = shapes + input_folders[chn] + "/vhcc_"+chn+"-"+year+".root"
@@ -332,6 +336,11 @@ for chn in chns:
       cb.cp().channel([chn]).backgrounds().bin_id([1,2]).ExtractShapes(
         file, 'BDT_VH_$BIN_$PROCESS', 'BDT_VH_$BIN_$PROCESS_$SYSTEMATIC')
       cb.cp().channel([chn]).signals().bin_id([1,2]).ExtractShapes(
+        file, 'BDT_VH_$BIN_$PROCESS', 'BDT_VH_$BIN_$PROCESS_$SYSTEMATIC')
+      if args.doKinFit and (chn=='Zee' or chn=='Zmm'):
+        cb.cp().channel([chn]).backgrounds().bin_id([1,2]).ExtractShapes(
+        file, 'BDT_VH_$BIN_$PROCESS', 'BDT_VH_$BIN_$PROCESS_$SYSTEMATIC')
+        cb.cp().channel([chn]).signals().bin_id([1,2]).ExtractShapes(
         file, 'BDT_VH_$BIN_$PROCESS', 'BDT_VH_$BIN_$PROCESS_$SYSTEMATIC')
     if args.doVV:
       cb.cp().channel([chn]).backgrounds().bin_id([1,2]).ExtractShapes(
@@ -411,6 +420,14 @@ if args.rebinning_scheme == 'LF1b_v0': # rebinning for H-analysis
   print 'binning in LF CRs:',binning,'for Zll channels'
   cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
   binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
+
+if args.rebinning_scheme == 'LF1b_v1': # rebinning for H-analysis
+  binning=np.linspace(0.0,0.4,num=4)
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=4)
   print 'binning in LF CRs:',binning,'for Wln,Znn channels'
   cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
 
@@ -506,6 +523,15 @@ cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS
 cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016')
 cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2016','CMS_vhcc_topptWeight_13TeV_2016')
+
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_cc','Wj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2017')
+cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2017','CMS_vhcc_topptWeight_13TeV_2017')
+
 #cb.cp().channel(['Wen','Wmn']).process(['Wj_ll','Wj_blc','Wj_bbc','Wj_cc','s_Top']).RenameSystematic(cb,'CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_wptEWKWeight_13TeV_2016')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_pdf_TT','CMS_LHE_weights_pdf_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_TT','CMS_LHE_weights_scale_muR_ttbar')

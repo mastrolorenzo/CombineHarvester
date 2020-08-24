@@ -60,21 +60,38 @@ def AddCommonSystematics(cb):
       'CMS_vhcc_ST', 'lnN', ch.SystMap()(1.15)) 
 
   #Theory uncertainties: pdf acceptance, to be re-evaluated
-  cb.cp().process(['ZH_hbb','ZH_hcc']).AddSyst(cb,'CMS_LHE_weights_pdf_ZH', 'lnN', ch.SystMap()(1.01)) 
-  cb.cp().process(['WH_hbb','WH_hcc']).AddSyst(cb,'CMS_LHE_weights_pdf_WH', 'lnN', ch.SystMap()(1.01))
-  cb.cp().process(['TT']).AddSyst(cb,    'CMS_LHE_weights_pdf_TT', 'lnN', ch.SystMap()(1.005))
-  cb.cp().process(['Zj_ll']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_ll', 'lnN', ch.SystMap()(1.05))
-  cb.cp().process(['Zj_blc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_blc', 'lnN', ch.SystMap()(1.03))
-  cb.cp().process(['Zj_bbc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_bbc', 'lnN', ch.SystMap()(1.02))
-  cb.cp().process(['Zj_cc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_cc', 'lnN', ch.SystMap()(1.02))
-  cb.cp().process(['Wj_ll']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_ll', 'lnN', ch.SystMap()(1.05))
-  cb.cp().process(['Wj_blc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_blc', 'lnN', ch.SystMap()(1.03))
-  cb.cp().process(['Wj_bbc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_bbc', 'lnN', ch.SystMap()(1.02))
-  cb.cp().process(['Wj_cc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_cc', 'lnN', ch.SystMap()(1.02))
-  cb.cp().process(['VVcc']).AddSyst(cb,'CMS_LHE_weights_pdf_VVcc', 'lnN', ch.SystMap()(1.02))
-  cb.cp().process(['VVother']).AddSyst(cb,'CMS_LHE_weights_pdf_VVother', 'lnN', ch.SystMap('channel') 
-                                                                        (['Zee','Zmm','Znn'],1.03)
-                                                                        (['Wen','Wmn'],1.02)) 
+#old  cb.cp().process(['ZH_hbb','ZH_hcc']).AddSyst(cb,'CMS_LHE_weights_pdf_ZH', 'lnN', ch.SystMap()(1.01)) 
+#old  cb.cp().process(['WH_hbb','WH_hcc']).AddSyst(cb,'CMS_LHE_weights_pdf_WH', 'lnN', ch.SystMap()(1.01))
+#old  cb.cp().process(['TT']).AddSyst(cb,    'CMS_LHE_weights_pdf_TT', 'lnN', ch.SystMap()(1.005))
+#old  cb.cp().process(['Zj_ll']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_ll', 'lnN', ch.SystMap()(1.05))
+#old  cb.cp().process(['Zj_blc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_blc', 'lnN', ch.SystMap()(1.03))
+#old  cb.cp().process(['Zj_bbc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_bbc', 'lnN', ch.SystMap()(1.02))
+#old  cb.cp().process(['Zj_cc']).AddSyst(cb,'CMS_LHE_weights_pdf_Zj_cc', 'lnN', ch.SystMap()(1.02))
+#old  cb.cp().process(['Wj_ll']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_ll', 'lnN', ch.SystMap()(1.05))
+#old  cb.cp().process(['Wj_blc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_blc', 'lnN', ch.SystMap()(1.03))
+#old  cb.cp().process(['Wj_bbc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_bbc', 'lnN', ch.SystMap()(1.02))
+#old  cb.cp().process(['Wj_cc']).AddSyst(cb,'CMS_LHE_weights_pdf_Wj_cc', 'lnN', ch.SystMap()(1.02))
+#old  cb.cp().process(['VVcc']).AddSyst(cb,'CMS_LHE_weights_pdf_VVcc', 'lnN', ch.SystMap()(1.02))
+#old  cb.cp().process(['VVother']).AddSyst(cb,'CMS_LHE_weights_pdf_VVother', 'lnN', ch.SystMap('channel') 
+#old                                                                        (['Zee','Zmm','Znn'],1.03)
+#old                                                                        (['Wen','Wmn'],1.02)) 
+
+#from 2017
+  cb.cp().process(['ZH_hbb','ZH_hcc']).AddSyst(cb,'CMS_LHE_pdf_ZH', 'shape', ch.SystMap()(1.0)) 
+  cb.cp().process(['WH_hbb','WH_hcc']).AddSyst(cb,'CMS_LHE_pdf_WH', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['TT']).AddSyst(cb,    'CMS_LHE_pdf_TT', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Zj_ll']).AddSyst(cb,'CMS_LHE_pdf_Zj_ll', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Zj_blc']).AddSyst(cb,'CMS_LHE_pdf_Zj_blc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Zj_bbc']).AddSyst(cb,'CMS_LHE_pdf_Zj_bbc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Zj_cc']).AddSyst(cb,'CMS_LHE_pdf_Zj_cc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Wj_ll']).AddSyst(cb,'CMS_LHE_pdf_Wj_ll', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Wj_blc']).AddSyst(cb,'CMS_LHE_pdf_Wj_blc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Wj_bbc']).AddSyst(cb,'CMS_LHE_pdf_Wj_bbc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['Wj_cc']).AddSyst(cb,'CMS_LHE_pdf_Wj_cc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['VVcc']).AddSyst(cb,'CMS_LHE_pdf_VVcc', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['VVother']).AddSyst(cb,'CMS_LHE_pdf_VVOther', 'shape', ch.SystMap('channel') 
+                                                                        (['Zee','Zmm','Znn'],1.0)
+                                                                        (['Wen','Wmn'],1.0)) 
   
   cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).AddSyst(cb,
       'CMS_LHE_weights_scale_muR_VVother','shape',ch.SystMap()(1.0))
@@ -317,7 +334,11 @@ def AddSystematics2016(cb, splitJEC=False):
 ########################################################################################################################################
 def AddSystematics2017(cb, splitJEC=False):
 
-  cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2016','shape',ch.SystMap()(1.0))
+  #to updadte when new shapes available
+#  cb.cp().channel(['Zee','Zmm']).AddSyst(cb,'CMS_vhcc_puWeight_2016','shape',ch.SystMap()(1.0))
+#  cb.cp().channel(['Wen','Wmn','Znn']).AddSyst(cb,'CMS_vhcc_puWeight_2017','shape',ch.SystMap()(1.0))
+
+  cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2017','shape',ch.SystMap()(1.0))
                             
   cb.cp().process(['ZH_hbb','ZH_hcc']).AddSyst(cb,'CMS_LHE_weights_scale_muR_ZH','shape',ch.SystMap()(1.0))
   cb.cp().process(['WH_hbb','WH_hcc']).AddSyst(cb,'CMS_LHE_weights_scale_muR_WH','shape',ch.SystMap()(1.0))
@@ -345,7 +366,7 @@ def AddSystematics2017(cb, splitJEC=False):
   cb.cp().process(['TT']).AddSyst(cb,'CMS_LHE_weights_scale_muF_TT','shape',ch.SystMap()(1.0))
 
   #To comment with NLO
-  cb.cp().process(['Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc']).AddSyst(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','shape',ch.SystMap()(1.0))
+  #cb.cp().process(['Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc']).AddSyst(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','shape',ch.SystMap()(1.0))
 
 
 
@@ -468,10 +489,10 @@ def AddSystematics2017(cb, splitJEC=False):
   cb.cp().channel(['Znn']).AddSyst(cb,'CMS_vhcc_trigger_MET_13TeV_2017','lnN',ch.SystMap()(1.02))
 
 #=============  VpT reweightings - to comment for NLO
-  cb.cp().process(['TT']).AddSyst(cb,'CMS_vhcc_topptreweighting_13TeV_2016','shape',ch.SystMap()(1.0)) 
-  cb.cp().channel(['Wen','Wmn']).process(['Wj_ll','Wj_blc','Wj_bbc','Wj_cc','s_Top']).AddSyst(cb,'CMS_vhcc_ptwweights_13TeV_2016','shape',ch.SystMap()(1.0))
-  cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll','Zj_blc','Zj_bbc','Zj_cc']).AddSyst(cb,'CMS_vhcc_ptzweights_13TeV_2016','shape',ch.SystMap()(1.0))
-  cb.cp().channel(['Zee','Zmm']).process(['s_Top']).AddSyst(cb,'CMS_vhcc_ptzweights_13TeV_2016','shape',ch.SystMap()(1.0))
+  cb.cp().process(['TT']).AddSyst(cb,'CMS_vhcc_topptreweighting_13TeV_2017','shape',ch.SystMap()(1.0)) 
+#uncomment for LO  cb.cp().channel(['Wen','Wmn']).process(['Wj_ll','Wj_blc','Wj_bbc','Wj_cc','s_Top']).AddSyst(cb,'CMS_vhcc_ptwweights_13TeV_2016','shape',ch.SystMap()(1.0))
+#uncomment for LO  cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll','Zj_blc','Zj_bbc','Zj_cc']).AddSyst(cb,'CMS_vhcc_ptzweights_13TeV_2016','shape',ch.SystMap()(1.0))
+#uncomment for LO  cb.cp().channel(['Zee','Zmm']).process(['s_Top']).AddSyst(cb,'CMS_vhcc_ptzweights_13TeV_2016','shape',ch.SystMap()(1.0))
 
   
 #  cb.cp().AddSyst(cb,
@@ -480,9 +501,9 @@ def AddSystematics2017(cb, splitJEC=False):
 
 
 #============= Jet energy scale and resolution
-
-#Luca test 2017  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2016','shape',ch.SystMap()(1.0))
-#Luca test 2017  cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
+#cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
+  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2017','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2017','shape',ch.SystMap()(1.0))
 
 #Luca test 2017  if splitJEC:
 #Luca test 2017    # split as JET/MET recommends
@@ -513,7 +534,6 @@ def AddSystematics2017(cb, splitJEC=False):
 #Luca test 2017    cb.cp().AddSyst(cb,'CMS_scale_j_FlavorQCD_13TeV_2016','shape',ch.SystMap()(1.0))
 #Luca test 2017    
 #Luca test 2017  else:
-#Luca test 2017    cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2016','shape',ch.SystMap()(1.0))
 
 #============= tagger uncertainties
 
