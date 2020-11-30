@@ -132,7 +132,7 @@ parser.add_argument(
 parser.add_argument(
  '--Znn_fwk', default='AT', help="""Framework the Znn inputs were produced with. Supported options: 'Xbb', 'AT'""")
 parser.add_argument(
- '--year', default='2017', help="""Year to produce datacards for (2017 or 2016)""")
+ '--year', default='2017', help="""Year to produce datacards for (2018, 2017 or 2016)""")
 parser.add_argument(
  '--extra_folder', default='', help="""Additional folder where cards are""")
 parser.add_argument(
@@ -186,8 +186,8 @@ if 'Znn' in args.channel:
 
 
 year = args.year
-if year is not "2016" and not "2017":
-  print "Year ", year, " not supported! Choose from: '2016', '2017'"
+if year is not "2016" and not "2017" and not "2018":
+  print "Year ", year, " not supported! Choose from: '2016', '2017', '2018'"
   sys.exit()
 
 input_fwks = {
@@ -316,6 +316,8 @@ if year=='2016':
   systs.AddSystematics2016(cb, args.splitJEC)
 if year=='2017':
   systs.AddSystematics2017(cb, args.splitJEC)
+if year=='2018':
+  systs.AddSystematics2018(cb, args.splitJEC)
 
 
 if args.bbb_mode==0:
