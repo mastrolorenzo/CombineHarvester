@@ -2,7 +2,7 @@
 
 import CombineHarvester.CombineTools.ch as ch
 #Luca test 2017 commented out --> import CombineHarvester.VHcc.systematics_vhcc_allcr as systs
-import CombineHarvester.VHcc.systematics_vhcc_FullRun2 as systs
+import CombineHarvester.VHcc.systematics_vhcc_FullRun2_altSplit_cjbjll as systs
 import ROOT as R
 import glob
 import numpy as np
@@ -218,29 +218,29 @@ input_folders = {
 if not args.doVV:
   if not args.doHbb:
     bkg_procs = {
-      'Wen' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Wmn' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc'],
-      #'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVbb','VVcc'],
+      'Wen' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Wmn' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VVcc'],
+      #'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Wj_ll','Wj_blc','Wj_bbc','VVother','VVbb','VVcc'],
     }
   else:
     bkg_procs = {
-      'Wen' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Wmn' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Zmm' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother','VVcc'],
-      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother','VVcc'],
+      'Wen' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Wmn' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Zmm' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
+      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VVcc'],
     }
     print bkg_procs
 else:
     bkg_procs = {
-    'Wen' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
-    'Wmn' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
-    'Zmm' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
-    'Zee' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','VVother'],
-    'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc','VVother'],
+    'Wen' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother'],
+    'Wmn' : ['WH_hcc','ZH_hcc','WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother'],
+    'Zmm' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother'],
+    'Zee' : ['ZH_hcc','ggZH_hcc','ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother'],
+    'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother'],
   }
 
 if not args.doVV:
@@ -433,6 +433,35 @@ if args.rebinning_scheme == 'LF1b_v1': # rebinning for H-analysis
   print 'binning in LF CRs:',binning,'for Wln,Znn channels'
   cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
 
+if args.rebinning_scheme == 'LF1b_CC8b':
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
+  binning=np.concatenate((np.array([0.0]), np.linspace(0.5, 0.9,num=7)))
+  print 'binning in CC CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([9,10]).VariableRebin(binning)
+  binning=np.concatenate((np.array([0.0]), np.linspace(0.5, 0.9,num=7)))
+  print 'binning in CC CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([9]).VariableRebin(binning)
+
+if args.rebinning_scheme == 'LF2b_v0': # rebinning for H-analysis
+  binning=np.array([0.,0.1,0.4])
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.array([0.,0.1,0.4])
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
+
+if args.rebinning_scheme == 'LF2b_v1': # rebinning for H-analysis
+  binning=np.linspace(0.0,0.4,num=3)
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=3)
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
 
 if args.rebinning_scheme == 'LF1b': # rebinning for H-analysis
   binning=np.linspace(0.0,0.4,num=2)
@@ -516,7 +545,7 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
     
 
 ### decrease bin statistical errors
-#Luca cb.cp().channel(['Zee','Zmm']).process(['Zj_cc','Zj_bbc','Zj_blc','Zj_ll']).ForEachProc(lambda x: decrease_bin_errors(x))
+#Luca cb.cp().channel(['Zee','Zmm']).process(['Zj_bbc','Zj_blc','Zj_ll']).ForEachProc(lambda x: decrease_bin_errors(x))
 
 cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016')
 cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016')
@@ -534,12 +563,23 @@ cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CM
 cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2017')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2017','CMS_vhcc_topptWeight_13TeV_2017')
 
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_cc','Wj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2018')
+cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2018','CMS_vhcc_topptWeight_13TeV_2018')
+
 #cb.cp().channel(['Wen','Wmn']).process(['Wj_ll','Wj_blc','Wj_bbc','Wj_cc','s_Top']).RenameSystematic(cb,'CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_wptEWKWeight_13TeV_2016')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_pdf_TT','CMS_LHE_weights_pdf_ttbar')
+#cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_pdf_TT','CMS_LHE_weights_pdf_ttbar')
+cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_pdf_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_TT','CMS_LHE_weights_scale_muR_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_TT','CMS_LHE_weights_scale_muF_ttbar')
-cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVother','CMS_LHE_weights_pdf_vvother')
-cb.cp().process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVcc','CMS_LHE_weights_pdf_vzcc')
+#cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVother','CMS_LHE_weights_pdf_vvother')
+cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_pdf_VVother','CMS_LHE_pdf_vvother')
+#cb.cp().process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVcc','CMS_LHE_weights_pdf_vzcc')
+cb.cp().process(['VVcc']).RenameSystematic(cb,'CMS_LHE_pdf_VVcc','CMS_LHE_pdf_vzcc')
 cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVother','CMS_LHE_weights_scale_muR_vvother')
 cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVcc','CMS_LHE_weights_scale_muR_vzcc')
 cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVother','CMS_LHE_weights_scale_muF_vvother')
@@ -583,11 +623,11 @@ if args.vjetsNLO:
 
 if args.doVV:
   cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VVcc','.*LHE_weights.*VVcc'])
-  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VVother','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VVother','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_blc.*','LHE_weights.*Zj_bbc.*','LHE_weights.*Zj_cc.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_blc.*','LHE_weights.*Wj_bbc.*','LHE_weights.*Wj_cc.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
+  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VVother','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VVother','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
 
 else:
   cb.SetGroup('signal_theory',['pdf_Higgs.*','BR_hcc','QCDscale_ggZH','QCDscale_VH','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*'])
-  cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_blc.*','LHE_weights.*Zj_bbc.*','LHE_weights.*Zj_cc.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_blc.*','LHE_weights.*Wj_bbc.*','LHE_weights.*Wj_cc.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
+  cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
   
 cb.SetGroup('sim_modelling',['CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_ptzweights_13TeV_2016','CMS_vhcc_topptWeight_13TeV_2016','.*vhcc_vjetnlodetajjrw.*','heavyFlavHadFrac_mismodelling.*'])
 cb.SetGroup('jes',['CMS_scale_j.*'])
