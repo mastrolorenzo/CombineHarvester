@@ -14,9 +14,9 @@ def AddCommonSystematics(cb):
   cb.cp().process(['ggZH_hbb','ggZH_hbb']).AddSyst(cb,'pdf_Higgs_gg', 'lnN', ch.SystMap()(1.024))
   
   cb.cp().process(signal).AddSyst(cb,'BR_hcc', 'lnN', ch.SystMap()((1.05,0.97)))
-#Luca   cb.cp().process(['ZH_hcc','WH_hcc','ggZH_hcc']).AddSyst(cb,'BR_hcc', 'lnN', ch.SystMap()((1.05,0.97)))
+  cb.cp().process(['ZH_hcc','WH_hcc','ggZH_hcc']).AddSyst(cb,'BR_hcc', 'lnN', ch.SystMap()((1.05,0.97)))
   cb.cp().process(['ZH_hbb','WH_hbb','ggZH_hbb']).AddSyst(cb,'BR_hbb', 'lnN', ch.SystMap()(1.005))
-#  cb.cp().process(['ZH_hbb','WH_hbb','ggZH_hbb']).AddSyst(cb,'BR_hbb', 'lnN', ch.SystMap()(1.20))
+#Luca   cb.cp().process(['ZH_hbb','WH_hbb','ggZH_hbb']).AddSyst(cb,'BR_hbb', 'lnN', ch.SystMap()(1.20))
 
   
   cb.cp().process(['ggZH_hbb','ggZH_hcc']).AddSyst(cb,'QCDscale_ggZH', 'lnN',ch.SystMap()((1.251,0.811)))
@@ -88,9 +88,9 @@ def AddCommonSystematics(cb):
       'CMS_LHE_weights_scale_muF_VVcc','shape',ch.SystMap()(1.0))
 
 
-###########################################
+########################################################################################################################################
 ### Uncertainties for 2016
-###########################################
+########################################################################################################################################
 def AddSystematics2016(cb, splitJEC=False):
 
   cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2016','shape',ch.SystMap()(1.0))
@@ -129,6 +129,14 @@ def AddSystematics2016(cb, splitJEC=False):
 #Luca   cb.cp().channel(['Wen','Wmn','Zee','Zmm','Znn']).process(['ZH_hbb','WH_hbb',"ggZH_hbb"]).AddSyst(cb,
 #Luca      'SF_VHbb', 'rateParam', ch.SystMap('bin_id')
 #Luca      ([1,3,5,7,9],1.0))
+
+#Luca  cb.cp().channel(['Zee','Zmm']).process(['WH_hbb','ZH_hbb','ggZH_hbb']).AddSyst(cb,
+#Luca     'SF_HBB_2016', 'rateParam', ch.SystMap('bin_id')
+#Luca      ([1,2,3,4,5,6,7,8,9,10],2.0))
+#Luca
+#Luca  cb.cp().channel(['Znn','Wen','Wmn']).process(['WH_hbb','ZH_hbb','ggZH_hbb']).AddSyst(cb,
+#Luca     'SF_HBB_2016', 'rateParam', ch.SystMap('bin_id')
+#Luca      ([1,3,5,7,9],2.0))
 
   
   # TT Zll
@@ -236,7 +244,13 @@ def AddSystematics2016(cb, splitJEC=False):
 
   #Set a sensible range for the rate params
   for syst in cb.cp().syst_type(["rateParam"]).syst_name_set():
-    cb.GetParameter(syst).set_range(0.0,5.0)
+    if 'SF_HBB_2016' in syst:
+      cb.GetParameter(syst).set_range(1.99,2.01)
+    else:
+      cb.GetParameter(syst).set_range(0.0,5.0)
+  #default analysis
+  #Luca for syst in cb.cp().syst_type(["rateParam"]).syst_name_set():
+  #Luca   cb.GetParameter(syst).set_range(0.0,5.0)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #%%%%%%%%%%%%%%%%% EXPERIMENTAL UNCERTAINTIES
@@ -304,8 +318,8 @@ def AddSystematics2016(cb, splitJEC=False):
 
 #============= Jet energy scale and resolution
 
-  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2016','shape',ch.SystMap()(1.0))
-  # cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
+  #Luca test 2017 cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2016','shape',ch.SystMap()(1.0))
+  #cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends
@@ -348,29 +362,25 @@ def AddSystematics2016(cb, splitJEC=False):
 
 #============= tagger uncertainties
 # inclusive in pt/eta
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_PU','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_MuId','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_JES','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_JER','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_muR','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_muF','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_MCStat','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_DataStat','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_FitUnc','shape',ch.SystMap()(1.0))
+#Luca test 2017  cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecs','shape',ch.SystMap()(1.0))
+
   cb.cp().AddSyst(cb,'CMS_cTagWeight_PU','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_MuId','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_JES','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_JER','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_muR','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_muF','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_MCStat','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_DataStat','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_FitUnc','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecs','shape',ch.SystMap()(1.0))
-
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_btag','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_PU','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_muonTrig','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_muonId','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_muonIso','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_elecTrig','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_elecId','shape',ch.SystMap()(1.0))
-#Luca   cb.cp().AddSyst(cb,'CMS_cTagWeight_elecReco','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
   
-# differential in pt/eta
-
 
 
 

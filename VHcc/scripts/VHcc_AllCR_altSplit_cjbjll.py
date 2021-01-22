@@ -158,24 +158,11 @@ mass = ['125']
 
 chns = []
 
-#Luca if args.channel=="all":
-#Luca   chns = ['Wen','Wmn','Zee','Zmm','Znn']
-#Luca if 'Zll' in args.channel or 'Zmm' in args.channel:
-#Luca   chns.append('Zmm')
-#Luca if 'Zll' in args.channel  or 'Zee' in args.channel:
-#Luca   chns.append('Zee')
-#Luca if 'Wln' in args.channel or 'Wmn' in args.channel:
-#Luca   chns.append('Wmn')
-#Luca if 'Wln' in args.channel or 'Wen' in args.channel:
-#Luca   chns.append('Wen')
-#Luca if 'Znn' in args.channel or 'Znn' in args.channel:
-#Luca   chns.append('Znn')
-
 if args.channel=="all":
   chns = ['Wen','Wmn','Znn','Zee','Zmm']
 if 'Zll' in args.channel or 'Zmm' in args.channel:
   chns.append('Zmm')
-if 'Zll' in args.channel  or 'Zee' in args.channel:
+if 'Zll' in args.channel or 'Zee' in args.channel:
   chns.append('Zee')
 if 'Wln' in args.channel or 'Wmn' in args.channel or 'Znn' in args.channel:
   chns.append('Wmn')
@@ -223,7 +210,6 @@ if not args.doVV:
       'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
       'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
       'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VVcc'],
-      #'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_blc','Zj_bbc','Wj_ll','Wj_blc','Wj_bbc','VVother','VVbb','VVcc'],
     }
   else:
     bkg_procs = {
@@ -547,32 +533,6 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
 ### decrease bin statistical errors
 #Luca cb.cp().channel(['Zee','Zmm']).process(['Zj_bbc','Zj_blc','Zj_ll']).ForEachProc(lambda x: decrease_bin_errors(x))
 
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_cc','Wj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2016','CMS_vhcc_topptWeight_13TeV_2016')
-
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_cc','Wj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2017','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2017')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2017','CMS_vhcc_topptWeight_13TeV_2017')
-
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().channel(['Wen','Wmn','Znn']).process(['Wj_cc','Wj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_ll']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_blc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().channel(['Zee','Zmm','Znn']).process(['Zj_cc','Zj_bbc']).RenameSystematic(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2018','CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2018')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_vhcc_topptreweighting_13TeV_2018','CMS_vhcc_topptWeight_13TeV_2018')
-
-#cb.cp().channel(['Wen','Wmn']).process(['Wj_ll','Wj_blc','Wj_bbc','Wj_cc','s_Top']).RenameSystematic(cb,'CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_wptEWKWeight_13TeV_2016')
-#cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_pdf_TT','CMS_LHE_weights_pdf_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_pdf_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_TT','CMS_LHE_weights_scale_muR_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_TT','CMS_LHE_weights_scale_muF_ttbar')
@@ -597,8 +557,6 @@ if args.vjetsNLO:
   cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_ptzweights_13TeV_2016") 
   cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_vjetnlodetajjrw_13TeV_2016") 
   
-#Luca cb.cp().channel(['Zee','Zmm']).bin_id([2,4,6,8,10]).RenameSystematic(cb,'CMS_cTagWeight_JES','CMS_cTagWeight_JES_lowPt')
-#Luca cb.cp().channel(['Zee','Zmm']).bin_id([2,4,6,8,10]).RenameSystematic(cb,'CMS_cTagWeight_JER','CMS_cTagWeight_JER_lowPt')
 
 #Luca #Correlate the Zll and Wln lepton efficiencies uncertainties:
 #Luca cb.cp().channel(['Wmn']).RenameSystematic(cb,'CMS_vhcc_eff_m_Wln_13TeV_2016','CMS_vhcc_eff_m_13TeV_2016')
@@ -607,29 +565,14 @@ if args.vjetsNLO:
 #Luca cb.cp().channel(['Zee']).RenameSystematic(cb,'CMS_vhcc_eff_e_Zll_13TeV_2016','CMS_vhcc_eff_e_13TeV_2016')
 
 
-#Luca cb.cp().signals().RenameSystematic(cb,'CMS_res_j_reg_13TeV','CMS_signal_resolution_13TeV')
-#Luca cb.cp().channel(['Wen','Wmn','Znn']).RenameSystematic(cb,'CMS_res_j_reg_13TeV','CMS_NoKinFit_res_j_reg_13TeV')
-#Luca cb.cp().channel(['Zee','Zmm']).RenameSystematic(cb,'CMS_res_j_reg_13TeV','CMS_KinFit_res_j_reg_13TeV')
-
-#if year=='2016':
-#    cb.cp().syst_name(["CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-#    cb.cp().syst_name(["CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Wj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-#    cb.cp().syst_name(["CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Wj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-#    cb.cp().syst_name(["CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Zj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-#    cb.cp().syst_name(["CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Zj_1hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-#    cb.cp().syst_name(["CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016"]).ForEachProc(lambda x:symmetrise_syst(cb,x,'CMS_Zj_2hf_vhcc_vjetnlodetajjrw_13TeV_2016'))
-
-
-
 if args.doVV:
   cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VVcc','.*LHE_weights.*VVcc'])
   cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VVother','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VVother','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
-
 else:
   cb.SetGroup('signal_theory',['pdf_Higgs.*','BR_hcc','QCDscale_ggZH','QCDscale_VH','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*'])
   cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
   
-cb.SetGroup('sim_modelling',['CMS_vhcc_ptwweights_13TeV_2016','CMS_vhcc_ptzweights_13TeV_2016','CMS_vhcc_topptWeight_13TeV_2016','.*vhcc_vjetnlodetajjrw.*','heavyFlavHadFrac_mismodelling.*'])
+cb.SetGroup('sim_modelling',['CMS_vhcc_ptwweights_13TeV_.*','CMS_vhcc_ptzweights_13TeV_.*','CMS_vhcc_topptWeight_13TeV_.*','.*vhcc_vjetnlodetajjrw.*','heavyFlavHadFrac_mismodelling.*'])
 cb.SetGroup('jes',['CMS_scale_j.*'])
 cb.SetGroup('jer',['CMS_res_j_13TeV.*'])
 cb.SetGroup('ctag',['CMS_cTagWeight.*'])
