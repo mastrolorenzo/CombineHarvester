@@ -175,6 +175,8 @@ for other in other_scans:
         other['func'].SetLineStyle(2)
         other['func'].SetLineWidth(2)
     other['func'].Draw('SAME')
+    other['func'].SetLineStyle(2)
+    other['func'].SetLineWidth(2)
 
 
 
@@ -241,11 +243,11 @@ print('year=',args.year)
 if args.year == '2016':
     plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 35.9 fb^{-1} (2016)", cmsTextSize = 0.7)
 elif args.year == '2017':
-    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 41.3 fb^{-1} (2017)", cmsTextSize = 0.7)
+    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 41.5 fb^{-1} (2017)", cmsTextSize = 0.7)
 elif args.year == '2018':
-    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 58.8 fb^{-1} (2018)", cmsTextSize = 0.7)
+    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 59.7 fb^{-1} (2018)", cmsTextSize = 0.7)
 elif 'comb' in args.year:
-    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 136.0 fb^{-1} (Run-2)", cmsTextSize = 0.7)
+    plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,"#sqrt{s}=13 TeV - 137.2 fb^{-1} (Run-2)", cmsTextSize = 0.7)
 
 legend_l = 0.69
 if len(other_scans) > 0:

@@ -127,11 +127,11 @@ CHN_DICT_CRLF = {
 #Luca }
 
 
-#for MODE in ['prefit','postfit']:
-for MODE in ['prefit']:
-#    for CHN in ['Zee','Zmm','Wen','Wmn','Znn']:
+for MODE in ['prefit','postfit']:
+#for MODE in ['postfit']:
+    for CHN in ['Zee','Zmm','Wen','Wmn','Znn']:
 #    for CHN in ['Zee','Zmm']:
-    for CHN in ['Wmn','Wen','Znn']:
+#    for CHN in ['Wmn','Wen','Znn']:
 #    for CHN in ['Zee','Zmm','Znn']:
         for i in range(0,len(CHN_DICT_CRHF[CHN])):
             LABEL = "%s" % CHN_DICT_CRHF[CHN][i][1]
@@ -139,18 +139,18 @@ for MODE in ['prefit']:
             XLOW = CHN_DICT_CRHF[CHN][i][2]
             XHIGH = CHN_DICT_CRHF[CHN][i][3]
             EXTRALABEL = CHN_DICT_CRHF[CHN][i][4]
-            os.system(('./scripts/postFitPlot_vhcc.py' \
-                       ' --file=shapes_v7_jes_240820_preOnly.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s --no_signal' \
+            os.system(('./scripts/postFitPlot_vhcc_alt.py' \
+                       ' --file=shapes_2017_topM.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s --no_signal' \
                        ' --ratio_range 0.4,1.6 --empty_bin_error --channel=%(CHN)s --cr ' \
                        ' --outname %(OUTNAME)s --mode %(MODE)s --x_title="CvsB_{min}"  --y_title "Events" --lumi="41.3 fb^{-1} (13 TeV)"'\
                        ' --x_axis_min %(XLOW)f --x_axis_max %(XHIGH)f --custom_x_range '\
                        ' --channel_label "%(LABEL)s" --extralabel "%(EXTRALABEL)s"' % vars()))
             
-#for MODE in ['prefit','postfit']:
-for MODE in ['prefit']:
-#    for CHN in ['Zee','Zmm','Wen','Wmn','Znn']:
+for MODE in ['prefit','postfit']:
+#for MODE in ['postfit']:
+    for CHN in ['Zee','Zmm','Wen','Wmn','Znn']:
 #    for CHN in ['Zee','Zmm']:
-    for CHN in ['Wmn','Wen','Znn']:
+#    for CHN in ['Wmn','Wen','Znn']:
 #    for CHN in ['Zee','Zmm','Znn']:
         for i in range(0,len(CHN_DICT_CRLF[CHN])):
               LABEL = "%s" % CHN_DICT_CRLF[CHN][i][1]
@@ -158,8 +158,8 @@ for MODE in ['prefit']:
               XLOW = CHN_DICT_CRLF[CHN][i][2]
               XHIGH = CHN_DICT_CRLF[CHN][i][3]
               EXTRALABEL = CHN_DICT_CRLF[CHN][i][4]
-              os.system(('./scripts/postFitPlot_vhcc.py' \
-                  ' --file=shapes_v7_jes_240820_preOnly.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s --no_signal' \
+              os.system(('./scripts/postFitPlot_vhcc_alt.py' \
+                  ' --file=shapes_2017_topM.root --ratio --extra_pad=0.53 --file_dir=%(OUTNAME)s --no_signal' \
                   ' --ratio_range 0.4,1.6 --empty_bin_error --channel=%(CHN)s --cr ' \
                   ' --outname %(OUTNAME)s --mode %(MODE)s --x_title="CvsL_{min}"  --y_title "Events" --lumi="41.3 fb^{-1} (13 TeV)"'\
                   ' --x_axis_min %(XLOW)f --x_axis_max %(XHIGH)f --custom_x_range '\

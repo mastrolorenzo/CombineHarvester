@@ -564,6 +564,14 @@ if args.vjetsNLO:
 #Luca cb.cp().channel(['Wen']).RenameSystematic(cb,'CMS_vhcc_eff_e_Wln_13TeV_2016','CMS_vhcc_eff_e_13TeV_2016')
 #Luca cb.cp().channel(['Zee']).RenameSystematic(cb,'CMS_vhcc_eff_e_Zll_13TeV_2016','CMS_vhcc_eff_e_13TeV_2016')
 
+#Luca if year=="2016":
+#Luca   print('Renaming the systematics associated to the lepton efficiency')
+#Luca   cb.cp().channel(['Wen']).RenameSystematic(cb,'CMS_Lep_SF','CMS_Lep_SF_Wen_13TeV_2016')
+#Luca   cb.cp().channel(['Wmn']).RenameSystematic(cb,'CMS_Lep_SF','CMS_Lep_SF_Wmn_13TeV_2016')
+#Luca   cb.cp().channel(['Zee']).RenameSystematic(cb,'CMS_Lep_SF','CMS_Lep_SF_Zee_13TeV_2016')
+#Luca   cb.cp().channel(['Zmm']).RenameSystematic(cb,'CMS_Lep_SF','CMS_Lep_SF_Zmm_13TeV_2016')
+
+
 
 if args.doVV:
   cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VVcc','.*LHE_weights.*VVcc'])

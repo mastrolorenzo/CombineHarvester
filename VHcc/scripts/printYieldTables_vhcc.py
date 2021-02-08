@@ -13,6 +13,7 @@ ROOT.gSystem.Load('libHiggsAnalysisCombinedLimit')
 parser = argparse.ArgumentParser()
 parser.add_argument('--workspace', '-w',help='Input workspace')
 parser.add_argument('--fit_file', '-f',help='Input workspace')
+parser.add_argument('--year', '-y',help='year')
 
 args = parser.parse_args()
 
@@ -31,13 +32,15 @@ rfr = mlf.Get('fit_s')
 
 
 def PrintTables(cmb, uargs):
-    c_znn = cmb.cp().bin(['vhcc_Znn_1_13TeV2016'])
-    c_wmn = cmb.cp().bin(['vhcc_Wmn_1_13TeV2016'])
-    c_wen = cmb.cp().bin(['vhcc_Wen_1_13TeV2016'])
-    c_zeelow = cmb.cp().bin(['vhcc_Zee_2_13TeV2016'])
-    c_zmmlow = cmb.cp().bin(['vhcc_Zmm_2_13TeV2016'])
-    c_zeehi = cmb.cp().bin(['vhcc_Zee_1_13TeV2016'])
-    c_zmmhi = cmb.cp().bin(['vhcc_Zmm_1_13TeV2016'])
+    print('year: ',args.year)
+    c_znn = cmb.cp().bin(['vhcc_Znn_1_13TeV'+args.year])
+    c_wmn = cmb.cp().bin(['vhcc_Wmn_1_13TeV'+args.year])
+    c_wen = cmb.cp().bin(['vhcc_Wen_1_13TeV'+args.year])
+    c_zeelow = cmb.cp().bin(['vhcc_Zee_2_13TeV'+args.year])
+    c_zmmlow = cmb.cp().bin(['vhcc_Zmm_2_13TeV'+args.year])
+    c_zeehi = cmb.cp().bin(['vhcc_Zee_1_13TeV'+args.year])
+    c_zmmhi = cmb.cp().bin(['vhcc_Zmm_1_13TeV'+args.year])
+
 
     print r"""
 \begin{tabular}{|l|r@{$ \,\,\pm\,\, $}lr@{$ \,\,\pm\,\, $}l|}
