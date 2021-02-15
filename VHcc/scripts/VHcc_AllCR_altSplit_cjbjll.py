@@ -147,6 +147,10 @@ parser.add_argument(
  '--doHbb',  default=False, help="""if True assume producing the datacards with VHbb as signal process""")
 parser.add_argument(
  '--doKinFit',  default=False, help="""if True enable BDT with KinFit in 2L channels""")
+parser.add_argument(
+ '--nBinSR',  default=15, help="""Set the number of bins in the SRs""")
+parser.add_argument(
+ '--edge',  default=0.5, help="""Set the fraction of the edge of the bin""")
 
 args = parser.parse_args()
 
@@ -261,31 +265,35 @@ if args.mjj:
     # don't fit QCD anywhere for Mjj!
     #Luca bkg_procs['Znn'].remove('QCD')
 
+  if args.rebinning_scheme == 'SR_nb':
+    cats = {
+      'Zee' : [(1, 'SR_high_Zee'), (2, 'SR_low_Zee')],
+      'Zmm' : [(1, 'SR_high_Zmm'), (2, 'SR_low_Zmm')],
+      'Wen' : [(1, 'SR_Wenu')],
+      'Wmn' : [(1, 'SR_Wmunu')],
+      'Znn' : [(1, 'SR_Znn')]
+    }
+    
+  elif args.rebinning_scheme is not 'SR_nb':
     cats = {
       'Zee' : [
-#        (1, 'SR_highKinFit_Zee'), (2, 'SR_lowKinFit_Zee'), (3, 'Zlf_high_Zee'), (4,'Zlf_low_Zee'),
+        #        (1, 'SR_highKinFit_Zee'), (2, 'SR_lowKinFit_Zee'), (3, 'Zlf_high_Zee'), (4,'Zlf_low_Zee'),
         (1, 'SR_high_Zee'), (2, 'SR_low_Zee'), (3, 'Zlf_high_Zee'), (4,'Zlf_low_Zee'),
         (5, 'Zhf_high_Zee'), (6, 'Zhf_low_Zee'), 
         (7,'ttbar_high_Zee'), (8,'ttbar_low_Zee'),(9,'Zcc_high_Zee'), (10,'Zcc_low_Zee')
         #(5,'Zcc_high_Zee'), (6,'Zcc_low_Zee'),(7,'ttbar_high_Zee'), (8,'ttbar_low_Zee')
-        ],
+      ],
       'Zmm' : [
-#        (1, 'SR_highKinFit_Zmm'), (2, 'SR_lowKinFit_Zmm'), (3, 'Zlf_high_Zmm'), (4,'Zlf_low_Zmm'),
+        #        (1, 'SR_highKinFit_Zmm'), (2, 'SR_lowKinFit_Zmm'), (3, 'Zlf_high_Zmm'), (4,'Zlf_low_Zmm'),
         (1, 'SR_high_Zmm'), (2, 'SR_low_Zmm'), (3, 'Zlf_high_Zmm'), (4,'Zlf_low_Zmm'),
         (5, 'Zhf_high_Zmm'), (6, 'Zhf_low_Zmm'), 
         (7,'ttbar_high_Zmm'), (8,'ttbar_low_Zmm'),(9,'Zcc_high_Zmm'), (10,'Zcc_low_Zmm')
         #(5,'Zcc_high_Zmm'), (6,'Zcc_low_Zmm'),(7,'ttbar_high_Zmm'), (8,'ttbar_low_Zmm'),
-        ],
-      'Wen' : [
-        (1, 'SR_Wenu'), (3,'Wlf_Wenu'), (5,'Whf_Wenu'), (7,'ttbar_Wenu'), (9,'Wcc_Wenu')
-        ],
-      'Wmn' : [
-        (1, 'SR_Wmunu'), (3,'Wlf_Wmunu'), (5,'Whf_Wmunu'), (7,'ttbar_Wmunu'), (9,'Wcc_Wmunu')
-        ],
-      'Znn' : [
-        (1, 'SR_Znn'), (3,'Vlf_Znn'), (5,'Vhf_Znn'), (7,'ttbar_Znn'), (9,'Vcc_Znn')
-        ]
-      }
+      ],
+      'Wen' : [(1, 'SR_Wenu'), (3,'Wlf_Wenu'), (5,'Whf_Wenu'), (7,'ttbar_Wenu'), (9,'Wcc_Wenu')],
+      'Wmn' : [(1, 'SR_Wmunu'), (3,'Wlf_Wmunu'), (5,'Whf_Wmunu'), (7,'ttbar_Wmunu'), (9,'Wcc_Wmunu')],
+    'Znn' : [(1, 'SR_Znn'), (3,'Vlf_Znn'), (5,'Vhf_Znn'), (7,'ttbar_Znn'), (9,'Vcc_Znn')]
+    }
     
 
 for chn in chns:
@@ -517,6 +525,58 @@ if args.rebinning_scheme == 'LF1b_TT1b_CC7b': # rebinning for H-analysis
   cb.cp().channel(['Znn']).bin_id([9]).VariableRebin(binning)
   binning=np.linspace(0.0,0.9,num=8)
 
+
+if args.rebinning_scheme == 'All1b': # rebinning for H-analysis
+  binning=np.linspace(0.0,1.0,num=2)
+  print 'binning in SRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([1,2]).VariableRebin(binning)
+  binning=np.linspace(0.0,1.0,num=2)
+  print 'binning in SRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([1]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
+  binning=np.linspace(0.0,1.0,num=2)
+  print 'binning in HF,CC,TT CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([5,6,7,8,9,10]).VariableRebin(binning)
+  binning=np.linspace(0.0,1.0,num=2)
+  print 'binning in HF,CC,TT CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([5,7,9]).VariableRebin(binning)
+
+
+nBinSR = args.nBinSR
+print("===> Rebinning the SR with number of bins = ",nBinSR)
+if args.rebinning_scheme == 'SR_nb': # rebinning for H-analysis
+  binning=np.linspace(0.0,1.0,int(nBinSR))
+  print 'binning in SRs:',binning,'for Zll channels'
+  #cb.cp().channel(['Zee']).bin_id([1,2]).VariableRebin([0., 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+  cb.cp().channel(['Zee','Zmm']).bin_id([1,2]).VariableRebin(binning)
+  binning=np.linspace(0.0,1.0,int(nBinSR))
+  print 'binning in SRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([1]).VariableRebin(binning)
+
+edge = args.edge
+if args.rebinning_scheme == 'SR_Scan': # rebinning for H-analysis
+  cb.cp().channel(['Zee']).bin_id([1,2]).VariableRebin([0., float(edge), 1.0])
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([1]).VariableRebin([0., float(edge), 1.0])
+
+if args.rebinning_scheme == 'rebinSRonly': # rebinning for H-analysis
+  binning=np.linspace(0.0,1.0,int(nBinSR))
+  print 'binning in SRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([1,2]).VariableRebin(binning)
+  binning=np.linspace(0.0,1.0,int(nBinSR))
+  print 'binning in SRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([1]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Zll channels'
+  cb.cp().channel(['Zee','Zmm']).bin_id([3,4]).VariableRebin(binning)
+  binning=np.linspace(0.0,0.4,num=2)
+  print 'binning in LF CRs:',binning,'for Wln,Znn channels'
+  cb.cp().channel(['Wen','Wmn','Znn']).bin_id([3]).VariableRebin(binning)
+
   
 cb.FilterProcs(lambda x: drop_zero_procs(cb,x))
 cb.FilterSysts(lambda x: drop_zero_systs(x))
@@ -532,6 +592,11 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
 
 ### decrease bin statistical errors
 #Luca cb.cp().channel(['Zee','Zmm']).process(['Zj_bbc','Zj_blc','Zj_ll']).ForEachProc(lambda x: decrease_bin_errors(x))
+
+if year=='2016':
+  cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2016')
+if year=='2017':
+  cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2017')
 
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_pdf_ttbar')
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_TT','CMS_LHE_weights_scale_muR_ttbar')
@@ -609,8 +674,18 @@ if args.auto_rebin:
       
 ch.SetStandardBinNames(cb)
 
-writer=ch.CardWriter("output/" + args.output_folder + year + "/$TAG/$BIN"+year+".txt",
-                      "output/" + args.output_folder + year +"/$TAG/vhcc_input_$BIN"+year+".root")
+
+if args.rebinning_scheme == 'SR_nb' :
+  writer=ch.CardWriter("OptimizeBinSR_NomShape_" + year +"/"+args.output_folder + "nb_"+str(nBinSR)+"/$TAG/$BIN"+year+".txt",
+                       "OptimizeBinSR_NomShape_" + year +"/"+args.output_folder + "nb_"+str(nBinSR)+"/$TAG/vhcc_input_$BIN"+year+".root")
+
+elif args.rebinning_scheme == 'SR_Scan':
+  writer=ch.CardWriter("OptimizeBinSR_NomShape_" + year +"/"+args.output_folder + "edge_"+str(edge)+"/$TAG/$BIN"+year+".txt",
+                       "OptimizeBinSR_NomShape_" + year +"/"+args.output_folder + "edge_"+str(edge)+"/$TAG/vhcc_input_$BIN"+year+".root")
+  
+else:
+  writer=ch.CardWriter("output/" + args.output_folder + year + "/$TAG/$BIN"+year+".txt",
+                       "output/" + args.output_folder + year +"/$TAG/vhcc_input_$BIN"+year+".root")
 writer.SetWildcardMasses([])
 writer.SetVerbosity(0);
                 
@@ -622,24 +697,31 @@ writer.WriteCards("cmb",cb);
 for chn in chns:
   writer.WriteCards(chn,cb.cp().channel([chn]))
 
+if args.rebinning_scheme == 'SR_nb':
+    writer.WriteCards("Znn",cb.cp().bin_id([1]).channel(['Znn']))
+    writer.WriteCards("Wen",cb.cp().bin_id([1]).channel(['Wen']))
+    writer.WriteCards("Wmn",cb.cp().bin_id([1]).channel(['Wmn']))
+    writer.WriteCards("Zee",cb.cp().bin_id([1,2]).channel(['Zee']))
+    writer.WriteCards("Wmm",cb.cp().bin_id([1,2]).channel(['Zmm']))
 
-if 'Znn' in chns:
-  #writer.WriteCards("Znn",cb.cp().FilterAll(lambda x: not (x.channel()=='Znn' or ( (x.channel() in ['Wmn','Wen']) and x.bin_id() in [3,4,5,6,7,8]))))
-  if args.mjj:
-    writer.WriteCards("Znn",cb.cp().channel(['Znn']))
-    writer.WriteCards("Znn",cb.cp().bin_id([3,5,7,9]).channel(['Wmn','Wen']))
+else:
+  if 'Znn' in chns:
+    #writer.WriteCards("Znn",cb.cp().FilterAll(lambda x: not (x.channel()=='Znn' or ( (x.channel() in ['Wmn','Wen']) and x.bin_id() in [3,4,5,6,7,8]))))
+    if args.mjj:
+      writer.WriteCards("Znn",cb.cp().channel(['Znn']))
+      writer.WriteCards("Znn",cb.cp().bin_id([3,5,7,9]).channel(['Wmn','Wen']))
       #Luca writer.WriteCards("Znn_CRonly",cb.cp().bin_id([3,4,5,6,7,8]).channel(['Znn','Wmn','Wen']))
-  else:
-    writer.WriteCards("Znn",cb.cp().channel(['Znn']))
-    writer.WriteCards("Znn",cb.cp().bin_id([5,6,7,8]).channel(['Wmn','Wen']))
-    writer.WriteCards("Znn_CRonly",cb.cp().bin_id([3,7]).channel(['Znn']))
+    else:
+      writer.WriteCards("Znn",cb.cp().channel(['Znn']))
+      writer.WriteCards("Znn",cb.cp().bin_id([5,6,7,8]).channel(['Wmn','Wen']))
+      writer.WriteCards("Znn_CRonly",cb.cp().bin_id([3,7]).channel(['Znn']))
       #Luca writer.WriteCards("Znn_CRonly",cb.cp().bin_id([5,6,7,8]).channel(['Wmn','Wen']))
     
-#Zll and Wln:
-if 'Wen' in chns and 'Wmn' in chns:
-  writer.WriteCards("Wln",cb.cp().channel(['Wen','Wmn']))
-  #Luca writer.WriteCards("Wln_CRonly",cb.cp().bin_id([3,4,5,6,7,8]).channel(['Wen','Wmn']))
+      #Zll and Wln:
+  if 'Wen' in chns and 'Wmn' in chns:
+    writer.WriteCards("Wln",cb.cp().channel(['Wen','Wmn']))
+    #Luca writer.WriteCards("Wln_CRonly",cb.cp().bin_id([3,4,5,6,7,8]).channel(['Wen','Wmn']))
 
-if 'Zee' in chns and 'Zmm' in chns:
-  writer.WriteCards("Zll",cb.cp().channel(['Zee','Zmm']))
-  #Luca writer.WriteCards("Zll_CRonly",cb.cp().bin_id([3,4,5,6,7,8]).channel(['Zee','Zmm']))
+  if 'Zee' in chns and 'Zmm' in chns:
+    writer.WriteCards("Zll",cb.cp().channel(['Zee','Zmm']))
+    #Luca writer.WriteCards("Zll_CRonly",cb.cp().bin_id([3,4,5,6,7,8]).channel(['Zee','Zmm']))
