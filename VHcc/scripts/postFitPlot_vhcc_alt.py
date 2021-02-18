@@ -274,11 +274,9 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -290,11 +288,9 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
          ],
@@ -307,7 +303,6 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -319,7 +314,6 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -332,11 +326,9 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ]
