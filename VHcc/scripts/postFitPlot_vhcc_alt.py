@@ -274,11 +274,11 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
+           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           backgroundComp("W+c#bar{c}",["Wj_cc"],803),
+           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -290,11 +290,11 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
+           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           backgroundComp("W+c#bar{c}",["Wj_cc"],803),
+           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
          ],
@@ -307,7 +307,7 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
+           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -319,7 +319,7 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
+           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ],
@@ -332,11 +332,11 @@ if args.doVV :
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
            backgroundComp("Z+cj",["Zj_cj"],829),
-           backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
+           #backgroundComp("Z+c#bar{c}",["Zj_cc"],824),
            backgroundComp("W+udsg",["Wj_ll"],800),
            backgroundComp("W+bj",["Wj_bj"],801),
            backgroundComp("W+cj",["Wj_cj"],802),
-           backgroundComp("W+c#bar{c}",["Wj_cc"],803),
+           #backgroundComp("W+c#bar{c}",["Wj_cc"],803),
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859)
            ]
@@ -738,10 +738,10 @@ if(log_y): outname+="_logy"
 if(log_x): outname+="_logx"
 if args.subbkg==0:
   c2.SaveAs("%(outname)s.png"%vars())
-  c2.SaveAs("%(outname)s.pdf"%vars())
+  #c2.SaveAs("%(outname)s.pdf"%vars())
 else:
   c2.SaveAs("%(outname)s_unsub.png"%vars())
-  c2.SaveAs("%(outname)s_unsub.pdf"%vars())
+  #c2.SaveAs("%(outname)s_unsub.pdf"%vars())
 
 if args.verbosity>0:
   print splusbhist.Integral(),stack.GetStack().Last().Integral()

@@ -584,6 +584,9 @@ def AddSystematics2018(cb, splitJEC=False):
   #To comment with NLO
   #cb.cp().process(['Zj_ll','Zj_blc','Zj_bbc','Zj_cc','Wj_ll','Wj_blc','Wj_bbc','Wj_cc']).AddSyst(cb,'CMS_vhcc_vjetnlodetajjrw_13TeV_2016','shape',ch.SystMap()(1.0))
 
+#============= Jet energy scale and resolution
+#  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
+#  cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2018','shape',ch.SystMap()(1.0))
 
 
 ####################### SCALE FACTORS RATEPARAM
@@ -674,6 +677,9 @@ def AddSystematics2018(cb, splitJEC=False):
 
   cb.cp().AddSyst( cb,'lumi_13TeV_2018','lnN', ch.SystMap()(1.023))
 
+#============= HEM 15/16 uncertainties
+
+    #cb.cp().channel(['Znn']).AddSyst(cb, 'HEM15/16_13TeV_2018','lnN', ch.SystMap()(1.05))
  
 #============= lepton efficiencies
 
