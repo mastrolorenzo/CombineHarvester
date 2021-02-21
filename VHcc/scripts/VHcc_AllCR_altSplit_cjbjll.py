@@ -209,19 +209,19 @@ input_folders = {
 if not args.doVV:
   if not args.doHbb:
     bkg_procs = {
-      'Wen' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Wmn' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VVcc'],
+      'Wen' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Wmn' : ['WH_hbb','ZH_hbb','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Zmm' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Zee' : ['ZH_hbb','ggZH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Znn' : ['ZH_hbb','ggZH_hbb','WH_hbb','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VZcc'],
     }
   else:
     bkg_procs = {
-      'Wen' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Wmn' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Zmm' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VVcc'],
-      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VVcc'],
+      'Wen' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Wmn' : ['WH_hcc','ZH_hcc','s_Top','TT','Wj_ll','Wj_bj','Wj_cj','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Zmm' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Zee' : ['ZH_hcc','ggZH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','VVother','VZcc'],
+      'Znn' : ['ZH_hcc','ggZH_hcc','WH_hcc','s_Top','TT','Zj_ll','Zj_bj','Zj_cj','Wj_ll','Wj_bj','Wj_cj','VVother','VZcc'],
     }
     print bkg_procs
 else:
@@ -253,11 +253,11 @@ if not args.doVV:
     
 else:
   sig_procs = {
-    'Wen' : ['VVcc'],
-    'Wmn' : ['VVcc'],
-    'Zmm' : ['VVcc'],
-    'Zee' : ['VVcc'],
-    'Znn' : ['VVcc']
+    'Wen' : ['VZcc'],
+    'Wmn' : ['VZcc'],
+    'Zmm' : ['VZcc'],
+    'Zee' : ['VZcc'],
+    'Znn' : ['VZcc']
   }
 
 if args.mjj:
@@ -587,7 +587,7 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
 #Luca cb.FilterProcs(lambda x: drop_znnqcd(cb,x))
 
 #Luca if args.doVV:
-#cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_VVcc")
+#cb.FilterSysts(lambda x: x.name()=="CMS_vhcc_VZcc")
     
 
 ### decrease bin statistical errors
@@ -598,17 +598,26 @@ if year=='2016':
 if year=='2017':
   cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2017')
 
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_pdf_ttbar')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_TT','CMS_LHE_weights_scale_muR_ttbar')
-cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_TT','CMS_LHE_weights_scale_muF_ttbar')
-#cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVother','CMS_LHE_weights_pdf_vvother')
-cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_pdf_VVother','CMS_LHE_pdf_vvother')
-#cb.cp().process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_pdf_VVcc','CMS_LHE_weights_pdf_vzcc')
-cb.cp().process(['VVcc']).RenameSystematic(cb,'CMS_LHE_pdf_VVcc','CMS_LHE_pdf_vzcc')
-cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVother','CMS_LHE_weights_scale_muR_vvother')
-cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVcc','CMS_LHE_weights_scale_muR_vzcc')
-cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVother','CMS_LHE_weights_scale_muF_vvother')
-cb.cp().channel(['Wen','Wmn','Zmm','Zee']).process(['VVcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVcc','CMS_LHE_weights_scale_muF_vzcc')
+#rename of PDF systematics uncertainties to match conventions
+cb.cp().process(['ggZH_hbb','ggZH_hcc']).RenameSystematic(cb,'CMS_LHE_pdf_ggZH', 'CMS_LHE_weights_pdf_ggZH') 
+cb.cp().process(['ZH_hbb','ZH_hcc']).RenameSystematic(cb,'CMS_LHE_pdf_ZH', 'CMS_LHE_weights_pdf_ZH') 
+cb.cp().process(['WH_hbb','WH_hcc']).RenameSystematic(cb,'CMS_LHE_pdf_WH', 'CMS_LHE_weights_pdf_WH') 
+cb.cp().process(['Zj_ll']).RenameSystematic(cb,'CMS_LHE_pdf_Zj_ll', 'CMS_LHE_weights_pdf_Zj_ll') 
+cb.cp().process(['Zj_bj']).RenameSystematic(cb,'CMS_LHE_pdf_Zj_bj', 'CMS_LHE_weights_pdf_Zj_bj') 
+cb.cp().process(['Zj_cj']).RenameSystematic(cb,'CMS_LHE_pdf_Zj_cj', 'CMS_LHE_weights_pdf_Zj_cj') 
+cb.cp().process(['Wj_ll']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_ll', 'CMS_LHE_weights_pdf_Wj_ll') 
+cb.cp().process(['Wj_bj']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_bj', 'CMS_LHE_weights_pdf_Wj_bj') 
+cb.cp().process(['Wj_cj']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_cj', 'CMS_LHE_weights_pdf_Wj_cj') 
+cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_weights_pdf_TT')
+cb.cp().process(['s_Top']).RenameSystematic(cb,'CMS_LHE_pdf_s_Top','CMS_LHE_weights_pdf_ST')
+cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_pdf_VVother','CMS_LHE_weights_pdf_VV')
+cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_pdf_VZcc','CMS_LHE_weights_pdf_VV')
+
+#rename of Renormalization/Factorization scale systematics uncertainties to match conventions
+cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVother','CMS_LHE_weights_scale_muR_VV')
+cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VZcc','CMS_LHE_weights_scale_muR_VV')
+cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVother','CMS_LHE_weights_scale_muF_VV')
+cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VZcc','CMS_LHE_weights_scale_muF_VV')
 
 if args.vjetsNLO:
   cb.FilterSysts(lambda x: x.name()=="CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
@@ -639,8 +648,8 @@ if args.vjetsNLO:
 
 
 if args.doVV:
-  cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VVcc','.*LHE_weights.*VVcc'])
-  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VVother','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VVother','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
+  cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VV','.*LHE_weights.*VV'])
+  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
 else:
   cb.SetGroup('signal_theory',['pdf_Higgs.*','BR_hcc','QCDscale_ggZH','QCDscale_VH','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*'])
   cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
