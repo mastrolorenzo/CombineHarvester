@@ -595,8 +595,15 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
 
 if year=='2016':
   cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2016')
+  cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2016','CMS_vhcc_puJetId_2016')
+  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2016')
 if year=='2017':
   cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2017')
+  cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2017','CMS_vhcc_puJetId_2017')
+  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2017')
+if year=='2018':
+  cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2018','CMS_vhcc_puJetId_2018')
+  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2018')
 
 #rename of PDF systematics uncertainties to match conventions
 cb.cp().process(['ggZH_hbb','ggZH_hcc']).RenameSystematic(cb,'CMS_LHE_pdf_ggZH', 'CMS_LHE_weights_pdf_ggZH') 
@@ -609,7 +616,7 @@ cb.cp().process(['Wj_ll']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_ll', 'CMS_LHE_wei
 cb.cp().process(['Wj_bj']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_bj', 'CMS_LHE_weights_pdf_Wj_bj') 
 cb.cp().process(['Wj_cj']).RenameSystematic(cb,'CMS_LHE_pdf_Wj_cj', 'CMS_LHE_weights_pdf_Wj_cj') 
 cb.cp().process(['TT']).RenameSystematic(cb,'CMS_LHE_pdf_TT','CMS_LHE_weights_pdf_TT')
-cb.cp().process(['s_Top']).RenameSystematic(cb,'CMS_LHE_pdf_s_Top','CMS_LHE_weights_pdf_ST')
+cb.cp().process(['s_Top']).RenameSystematic(cb,'CMS_LHE_pdf_ST','CMS_LHE_weights_pdf_ST')
 cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_pdf_VVother','CMS_LHE_weights_pdf_VV')
 cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_pdf_VZcc','CMS_LHE_weights_pdf_VV')
 
@@ -618,6 +625,7 @@ cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VVot
 cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muR_VZcc','CMS_LHE_weights_scale_muR_VV')
 cb.cp().process(['VVother']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VVother','CMS_LHE_weights_scale_muF_VV')
 cb.cp().process(['VZcc']).RenameSystematic(cb,'CMS_LHE_weights_scale_muF_VZcc','CMS_LHE_weights_scale_muF_VV')
+
 
 if args.vjetsNLO:
   cb.FilterSysts(lambda x: x.name()=="CMS_Wj_0hf_vhcc_vjetnlodetajjrw_13TeV_2016")
@@ -649,18 +657,19 @@ if args.vjetsNLO:
 
 if args.doVV:
   cb.SetGroup('signal_theory',['CMS_LHE_weights_pdf_VV','.*LHE_weights.*VV'])
-  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
+  cb.SetGroup('bkg_theory',['pdf_Higgs.*','pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV','CMS_vhbb_ST','.*LHE_weights.*ZHbb.*','.*LHE_weights.*WHbb.*','.*LHE_weights.*ggZHbb.*','.*LHE_weights.*TT.*','.*LHE_weights.*VV','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*','.*LHE_weights.*ZHcc.*','.*LHE_weights.*WHcc.*','.*LHE_weights.*ggZHcc.*','BR_hcc','QCDscale_ggZH','QCDscale_VH',])
 else:
-  cb.SetGroup('signal_theory',['pdf_Higgs.*','BR_hcc','QCDscale_ggZH','QCDscale_VH','.*LHE_weights.*ZHcc*','.*LHE_weights.*WHcc*','.*LHE_weights.*ggZHcc*'])
-  cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb*','.*LHE_weights.*WHbb*','.*LHE_weights.*ggZHbb*','.*LHE_weights.*TT.*','.*LHE_weights.*VV*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
+  cb.SetGroup('signal_theory',['pdf_Higgs.*','BR_hcc','QCDscale_ggZH','QCDscale_VH','.*LHE_weights.*ZHcc.*','.*LHE_weights.*WHcc.*','.*LHE_weights.*ggZHcc.*'])
+  cb.SetGroup('bkg_theory',['pdf_qqbar','pdf_gg','CMS_LHE_weights_pdf_VV*','CMS_vhbb_ST','.*LHE_weights.*ZHbb.*','.*LHE_weights.*WHbb.*','.*LHE_weights.*ggZHbb.*','.*LHE_weights.*TT.*','.*LHE_weights.*VV.*','.*LHE_weights.*Zj_ll.*','LHE_weights.*Zj_bj.*','LHE_weights.*Zj_cj.*','LHE_weights.*Wj_ll.*','LHE_weights.*Wj_bj.*','LHE_weights.*Wj_cj.*','LHE_weights.*s_Top.*','LHE_weights.*QCD.*'])
   
 cb.SetGroup('sim_modelling',['CMS_vhcc_ptwweights_13TeV_.*','CMS_vhcc_ptzweights_13TeV_.*','CMS_vhcc_topptWeight_13TeV_.*','.*vhcc_vjetnlodetajjrw.*','heavyFlavHadFrac_mismodelling.*'])
 cb.SetGroup('jes',['CMS_scale_j.*'])
 cb.SetGroup('jer',['CMS_res_j_13TeV.*'])
 cb.SetGroup('ctag',['CMS_cTagWeight.*'])
 cb.SetGroup('lumi',['lumi_13TeV.*','.*puWeight.*'])
-cb.SetGroup('lep_eff',['.*eff_e.*','.*eff_m.*'])
-cb.SetGroup('met',['.*MET.*'])
+cb.SetGroup('lep_eff',['.*eff_e.*','.*eff_m.*','.*PrefireWeight.*'])
+cb.SetGroup('jet_puId',['.*puJetId.*'])
+cb.SetGroup('met',['.*MET.*','.*met.*'])
 
 #To rename processes:
 #cb.cp().ForEachObj(lambda x: x.set_process("WH_lep") if x.process()=='WH_hbb' else None)
