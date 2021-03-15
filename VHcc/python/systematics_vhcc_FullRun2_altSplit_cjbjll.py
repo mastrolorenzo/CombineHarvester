@@ -36,16 +36,16 @@ def AddCommonSystematics(cb):
   
 
   # Theory uncertainties: backgrounds -> to be checked!
-  cb.cp().AddSyst(cb,
-                  'pdf_qqbar', 'lnN', ch.SystMap('channel','process') 
-                  (['Zee','Zmm'],['Zj_ll','Zj_bj','Zj_cj','VVother''VZcc'], 1.01) 
-                  (['Znn'],['VVother','VZcc'],1.01)
-                  (['Wen','Wmn'],['VVother','VZcc'],1.01)) 
- 
-  cb.cp().AddSyst(cb,
-                  'pdf_gg', 'lnN', ch.SystMap('channel','process')
-                  (['Zee','Zmm','Znn'],['TT','s_Top','QCD'], 1.01)
-                  (['Wen','Wmn'], ['s_Top'],1.01))
+#keep out atm   cb.cp().AddSyst(cb,
+#keep out atm                   'pdf_qqbar', 'lnN', ch.SystMap('channel','process') 
+#keep out atm                   (['Zee','Zmm'],['Zj_ll','Zj_bj','Zj_cj','VVother''VZcc'], 1.01) 
+#keep out atm                   (['Znn'],['VVother','VZcc'],1.01)
+#keep out atm                   (['Wen','Wmn'],['VVother','VZcc'],1.01)) 
+#keep out atm  
+#keep out atm   cb.cp().AddSyst(cb,
+#keep out atm                   'pdf_gg', 'lnN', ch.SystMap('channel','process')
+#keep out atm                   (['Zee','Zmm','Znn'],['TT','s_Top','QCD'], 1.01)
+#keep out atm                   (['Wen','Wmn'], ['s_Top'],1.01))
   
 #  cb.cp().AddSyst(cb,
 #                  'QCDscale_ttbar', 'lnN', ch.SystMap('channel','process') 
@@ -59,12 +59,17 @@ def AddCommonSystematics(cb):
   cb.cp().process(['VVother','VZcc']).AddSyst(cb,'CMS_VV_NNLOWeights_13TeV', 'shape')
   cb.cp().process(['s_Top']).AddSyst(cb,'CMS_vhcc_ST', 'lnN', ch.SystMap()(1.15)) 
 
+  # Uncertainty on di-boson NNLO reweighting 
+  cb.cp().process(['VVother','VZcc']).AddSyst(cb, 'CMS_VV_NNLOWeights_13TeV', 'shape', ch.SystMap()(1.0))
+
+
 
   # Theoretical PDF uncertainties
   cb.cp().process(['ggZH_hbb','ggZH_hcc']).AddSyst(cb,'CMS_LHE_pdf_ggZH', 'shape', ch.SystMap()(1.0)) 
   cb.cp().process(['ZH_hbb','ZH_hcc']).AddSyst(cb,'CMS_LHE_pdf_ZH', 'shape', ch.SystMap()(1.0)) 
   cb.cp().process(['WH_hbb','WH_hcc']).AddSyst(cb,'CMS_LHE_pdf_WH', 'shape', ch.SystMap()(1.0))
-  cb.cp().process(['TT']).AddSyst(cb,   'CMS_LHE_pdf_TT', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['TT']).AddSyst(cb,'CMS_LHE_pdf_TT', 'shape', ch.SystMap()(1.0))
+  cb.cp().process(['s_Top']).AddSyst(cb,'CMS_LHE_pdf_ST', 'shape', ch.SystMap()(1.0))
   cb.cp().process(['Zj_ll']).AddSyst(cb,'CMS_LHE_pdf_Zj_ll', 'shape', ch.SystMap()(1.0))
   cb.cp().process(['Zj_bj']).AddSyst(cb,'CMS_LHE_pdf_Zj_bj', 'shape', ch.SystMap()(1.0))
   cb.cp().process(['Zj_cj']).AddSyst(cb,'CMS_LHE_pdf_Zj_cj', 'shape', ch.SystMap()(1.0))
@@ -195,8 +200,9 @@ def AddSystematics2016(cb, splitJEC=False):
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #%%%%%%%%%%%%%%%%% EXPERIMENTAL UNCERTAINTIES
 
-  cb.cp().AddSyst( cb,'lumi_13TeV_2016','lnN', ch.SystMap()(1.025))
+  cb.cp().AddSyst(cb,'lumi_13TeV_2016','lnN', ch.SystMap()(1.025))
   cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2016','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2016','shape',ch.SystMap()(1.0))
  
 #============= Prefire efficiencies
   cb.cp().channel(['Zee','Zmm','Wmn','Wen']).AddSyst(cb,'CMS_PrefireWeight','shape',ch.SystMap()(1.0))
@@ -235,6 +241,7 @@ def AddSystematics2016(cb, splitJEC=False):
 #============= Jet energy scale and resolution
 
   cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2016','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 #  cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
 
  
@@ -377,6 +384,7 @@ def AddSystematics2017(cb, splitJEC=False):
 
   cb.cp().AddSyst( cb,'lumi_13TeV_2017','lnN', ch.SystMap()(1.023))
   cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2017','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2017','shape',ch.SystMap()(1.0))
 
 #============= Prefire efficiencies
   cb.cp().channel(['Zee','Zmm','Wmn','Wen']).AddSyst(cb,'CMS_PrefireWeight','shape',ch.SystMap()(1.0))
@@ -405,7 +413,8 @@ def AddSystematics2017(cb, splitJEC=False):
 
 
 #============= Jet energy scale and resolution
-#cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
+  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2017','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends
@@ -436,7 +445,6 @@ def AddSystematics2017(cb, splitJEC=False):
     cb.cp().AddSyst(cb,'CMS_scale_j_FlavorQCD_13TeV_2016','shape',ch.SystMap()(1.0))
     
   else:
-    cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2017','shape',ch.SystMap()(1.0))
     cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2017','shape',ch.SystMap()(1.0))
 
 #============= tagger uncertainties
@@ -587,7 +595,8 @@ def AddSystematics2018(cb, splitJEC=False):
 
 #============= puWeight
   cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2018','shape',ch.SystMap()(1.0))
- 
+  cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2018','shape',ch.SystMap()(1.0))
+
 #============= lepton efficiencies
 
   cb.cp().channel(['Wmn']).AddSyst(cb,'CMS_vhcc_eff_m_Wln_13TeV_2018','lnN',ch.SystMap()(1.02))
@@ -612,7 +621,8 @@ def AddSystematics2018(cb, splitJEC=False):
 
 
 #============= Jet energy scale and resolution
-#cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
+  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends
@@ -643,7 +653,6 @@ def AddSystematics2018(cb, splitJEC=False):
     cb.cp().AddSyst(cb,'CMS_scale_j_FlavorQCD_13TeV_2016','shape',ch.SystMap()(1.0))
     
 #  else:
-#    cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
 #    cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2018','shape',ch.SystMap()(1.0))
 
 #============= tagger uncertainties
