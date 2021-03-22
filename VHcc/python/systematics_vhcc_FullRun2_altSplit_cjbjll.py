@@ -56,7 +56,6 @@ def AddCommonSystematics(cb):
 
   # Measured cross section uncertainties because we don't have SF
   cb.cp().process(['VVother','VZcc']).AddSyst(cb,'CMS_vhcc_VV', 'lnN', ch.SystMap()(1.05)) 
-  cb.cp().process(['VVother','VZcc']).AddSyst(cb,'CMS_VV_NNLOWeights_13TeV', 'shape')
   cb.cp().process(['s_Top']).AddSyst(cb,'CMS_vhcc_ST', 'lnN', ch.SystMap()(1.15)) 
 
   # Uncertainty on di-boson NNLO reweighting 
@@ -583,19 +582,13 @@ def AddSystematics2018(cb, splitJEC=False):
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #%%%%%%%%%%%%%%%%% EXPERIMENTAL UNCERTAINTIES
 
-  cb.cp().AddSyst( cb,'lumi_13TeV_2018','lnN', ch.SystMap()(1.023))
+  cb.cp().AddSyst(cb,'lumi_13TeV_2018','lnN', ch.SystMap()(1.023))
+  cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2018','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2018','shape',ch.SystMap()(1.0))
 
 #============= HEM 15/16 uncertainties
 
   cb.cp().AddSyst(cb,'CMS_scale_j_HEMIssue_13TeV_2018','shape',ch.SystMap()(1.0))
-
-#============= MET Unclustered En
-
-    cb.cp().channe(['Wmn','Wen','Znn']).AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0))
-
-#============= puWeight
-  cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2018','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2018','shape',ch.SystMap()(1.0))
 
 #============= lepton efficiencies
 
@@ -622,7 +615,7 @@ def AddSystematics2018(cb, splitJEC=False):
 
 #============= Jet energy scale and resolution
   cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
+  cb.cp().channel(['Wen','Wmn','Znn']).AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends
