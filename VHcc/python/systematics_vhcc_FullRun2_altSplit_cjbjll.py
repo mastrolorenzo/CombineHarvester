@@ -240,7 +240,7 @@ def AddSystematics2016(cb, splitJEC=False):
 #============= Jet energy scale and resolution
 
   cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2016','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
+  cb.cp().channel(['Wen','Wmn','Znn']).AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 #  cb.cp().AddSyst(cb,'CMS_res_j_reg_13TeV_2016','shape',ch.SystMap()(1.0)) 
 
  
@@ -413,7 +413,7 @@ def AddSystematics2017(cb, splitJEC=False):
 
 #============= Jet energy scale and resolution
   cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2017','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
+  cb.cp().channel(['Wen','Wmn','Znn']).AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends
@@ -582,7 +582,7 @@ def AddSystematics2018(cb, splitJEC=False):
 
 #============= Jet energy scale and resolution
   cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
+  cb.cp().channel(['Wen','Wmn','Znn']).AddSyst(cb,'CMS_METUnclustEn','shape',ch.SystMap()(1.0)) 
 
   if splitJEC:
     # split as JET/MET recommends

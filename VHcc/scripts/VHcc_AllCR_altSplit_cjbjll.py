@@ -596,14 +596,14 @@ cb.FilterSysts(lambda x: drop_zero_systs(x))
 if year=='2016':
   cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2016')
   cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2016','CMS_vhcc_puJetId_2016')
-  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2016')
+  cb.cp().channel(['Wen','Wmn','Znn']).RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2016')
 if year=='2017':
   cb.cp().RenameSystematic(cb,'CMS_PrefireWeight','CMS_PrefireWeight_13TeV_2017')
   cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2017','CMS_vhcc_puJetId_2017')
-  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2017')
+  cb.cp().channel(['Wen','Wmn','Znn']).RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2017')
 if year=='2018':
   cb.cp().RenameSystematic(cb,'CMS_PUIDWeight_13TeV_2018','CMS_vhcc_puJetId_2018')
-  cb.cp().RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2018')
+  cb.cp().channel(['Wen','Wmn','Znn']).RenameSystematic(cb,'CMS_METUnclustEn','CMS_res_met_13TeV_2018')
 
 #rename of PDF systematics uncertainties to match conventions
 cb.cp().process(['ggZH_hbb','ggZH_hcc']).RenameSystematic(cb,'CMS_LHE_pdf_ggZH', 'CMS_LHE_weights_pdf_ggZH') 
