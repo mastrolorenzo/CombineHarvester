@@ -111,7 +111,6 @@ def AddCommonSystematics(cb):
 ### Uncertainties for 2016
 ########################################################################################################################################
 def AddSystematics2016(cb, splitJEC=False):
-                            
 
 ####################### SCALE FACTORS RATEPARAM
   
@@ -466,11 +465,6 @@ def AddSystematics2017(cb, splitJEC=False):
 ### Uncertainties for 2018
 ########################################################################################################################################
 def AddSystematics2018(cb, splitJEC=False):
-  
-#============= Jet energy scale and resolution
-  cb.cp().AddSyst(cb,'CMS_res_j_13TeV_2018','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2018','shape',ch.SystMap()(1.0))
-
 
 ####################### SCALE FACTORS RATEPARAM
   
