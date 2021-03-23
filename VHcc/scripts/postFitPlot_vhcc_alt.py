@@ -730,10 +730,10 @@ if(log_y): outname+="_logy"
 if(log_x): outname+="_logx"
 if args.subbkg==0:
   c2.SaveAs("%(outname)s.png"%vars())
-  #c2.SaveAs("%(outname)s.pdf"%vars())
+  c2.SaveAs("%(outname)s.pdf"%vars())
 else:
   c2.SaveAs("%(outname)s_unsub.png"%vars())
-  #c2.SaveAs("%(outname)s_unsub.pdf"%vars())
+  c2.SaveAs("%(outname)s_unsub.pdf"%vars())
 
 if args.verbosity>0:
   print splusbhist.Integral(),stack.GetStack().Last().Integral()
