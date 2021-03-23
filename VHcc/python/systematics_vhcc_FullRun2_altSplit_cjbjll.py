@@ -553,9 +553,13 @@ def AddSystematics2018(cb, splitJEC=False):
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #%%%%%%%%%%%%%%%%% EXPERIMENTAL UNCERTAINTIES
 
-  cb.cp().AddSyst( cb,'lumi_13TeV_2018','lnN', ch.SystMap()(1.023))
+  cb.cp().AddSyst(cb,'lumi_13TeV_2018','lnN', ch.SystMap()(1.023))
   cb.cp().AddSyst(cb,'CMS_vhcc_puWeight_2018','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_PUIDWeight_13TeV_2018','shape',ch.SystMap()(1.0))
+
+#============= HEM 15/16 uncertainties
+
+  cb.cp().AddSyst(cb,'CMS_scale_j_HEMIssue_13TeV_2018','shape',ch.SystMap()(1.0))
 
 #============= lepton efficiencies
 
