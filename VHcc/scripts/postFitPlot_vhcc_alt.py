@@ -209,7 +209,7 @@ if not args.doVV :
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859),
            backgroundComp("VV+other",["VVother"], 623),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VVcc"],607)
+           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VZcc"],607)
            ],
     
     'Wmn':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb"],881),
@@ -223,7 +223,7 @@ if not args.doVV :
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859),
            backgroundComp("VV+other",["VVother"], 623),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VVcc"],607)
+           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VZcc"],607)
          ],
 
 
@@ -235,7 +235,7 @@ if not args.doVV :
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859),
            backgroundComp("VV+other",["VVother"], 623),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VVcc"],607)           
+           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VZcc"],607)           
            ],
 
     'Zmm':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","ggZH_hbb"],881),
@@ -246,7 +246,7 @@ if not args.doVV :
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859),
            backgroundComp("VV+other",["VVother"], 623),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VVcc"],607)           
+           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VZcc"],607)           
            ],
 
     'Znn':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb","ggZH_hbb"],881),
@@ -261,7 +261,7 @@ if not args.doVV :
            backgroundComp("t#bar{t}",["TT"],866),
            backgroundComp("Single top",["s_Top"],859),
            backgroundComp("VV+other",["VVother"], 623),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VVcc"],607)
+           backgroundComp("VZ(Z#rightarrowc#bar{c})",["VZcc"],607)
            ]
     }
 
@@ -269,7 +269,7 @@ if args.doVV :
   background_schemes = {
     'Wen':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})",["ZH_hcc","WH_hcc"],2),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
+           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VZcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
@@ -283,7 +283,7 @@ if args.doVV :
     
     'Wmn':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})",["ZH_hcc","WH_hcc"],2),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
+           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VZcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
@@ -298,7 +298,7 @@ if args.doVV :
 
     'Zee':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","ggZH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})",["ZH_hcc","ggZH_hcc"],2),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
+           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VZcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
@@ -309,7 +309,7 @@ if args.doVV :
 
     'Zmm':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","ggZH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})",["ZH_hcc","ggZH_hcc"],2),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
+           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VZcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("Z+udsg",["Zj_ll"],821),
            backgroundComp("Z+bj",["Zj_bj"],830),
@@ -320,7 +320,7 @@ if args.doVV :
 
     'Znn':[backgroundComp("VH(H#rightarrowb#bar{b})",["ZH_hbb","WH_hbb","ggZH_hbb"],881),
            backgroundComp("VH(H#rightarrowc#bar{c})",["ZH_hcc","WH_hcc","ggZH_hbb"],2),
-           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VVcc"],607),
+           backgroundComp("VZ(Z#rightarrowc#bar{c})"+(args.mu),["VZcc"],607),
            backgroundComp("VV+other",["VVother"], 623),
            backgroundComp("QCD",["QCD"],16),
            backgroundComp("Z+udsg",["Zj_ll"],821),
@@ -353,7 +353,7 @@ for i in range(1,splusbhist.GetNbinsX()+1):
 
 if args.subbkg!=0:
   splusbhist_total = getHistogram(histo_file,'TotalProcs',file_dir, mode, logx=log_x)[0]
-  vvhist = getHistogram(histo_file,'VVcc',file_dir, mode, logx=log_x)[0]
+  vvhist = getHistogram(histo_file,'VZcc',file_dir, mode, logx=log_x)[0]
 
 if args.verbosity>1:
   print "grabbing data histogram"
