@@ -275,18 +275,25 @@ def AddSystematics2016(cb, splitJEC=False):
     cb.cp().AddSyst(cb,'CMS_scale_j_13TeV_2016','shape',ch.SystMap()(1.0))
 
 #============= c-tagger uncertainties - inclusive in pt/eta
+
   cb.cp().AddSyst(cb,'CMS_cTagWeight_JES','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_PU','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_MuId','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_muR','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_muF','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_JER','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_cTagWeight_Stat_2016','shape',ch.SystMap()(1.0))    
+  cb.cp().AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
+  cb.cp().AddSyst(cb,'CMS_cTagWeight_MuId','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecDYJets','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecST','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecWJets','shape',ch.SystMap()(1.0))
   cb.cp().AddSyst(cb,'CMS_cTagWeight_XSecTTbar','shape',ch.SystMap()(1.0))
-  cb.cp().AddSyst(cb,'CMS_cTagWeight_Stat_2016','shape',ch.SystMap()(1.0))    
+#  cb.cp().channel(['Wen','Wmn','Zee','Zmm']).AddSyst(cb,'CMS_cTagWeight_EleId','shape',ch.SystMap()(1.0))
+#  cb.cp().channel(['Wen','Wmn','Zee','Zmm']).AddSyst(cb,'CMS_cTagWeight_MuId','shape',ch.SystMap()(1.0))
+#  cb.cp().process(['Zj_ll','Zj_bj','Zj_cj']).AddSyst(cb,'CMS_cTagWeight_XSecDYJets','shape',ch.SystMap()(1.0))
+#  cb.cp().process(['s_Top']).AddSyst(cb,'CMS_cTagWeight_XSecST','shape',ch.SystMap()(1.0))
+#  cb.cp().process(['Wj_ll','Wj_bj','Wj_cj']).AddSyst(cb,'CMS_cTagWeight_XSecWJets','shape',ch.SystMap()(1.0))
+#  cb.cp().process(['TT']).AddSyst(cb,'CMS_cTagWeight_XSecTTbar','shape',ch.SystMap()(1.0))
 
 
 ########################################################################################################################################
